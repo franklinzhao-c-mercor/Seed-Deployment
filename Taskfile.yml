@@ -1,0 +1,12 @@
+version: "3"
+
+tasks:
+  process-scenarios:
+    desc: Clean scenarios.csv (drop duplicates and rows missing required fields)
+    cmds:
+      - uv run python src/processing.py {{.CLI_ARGS}}
+
+  upload-scenarios:
+    desc: Upload scenario rows from scenarios.csv to Airtable Tasks
+    cmds:
+      - uv run python src/upload_scenarios_to_airtable.py {{.CLI_ARGS}}
